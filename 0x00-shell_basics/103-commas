@@ -1,4 +1,2 @@
 #!/bin/bash
-printf "%s\n" . ..
-ls -1 | sed 's/$/,/' | sed 's/^/ /; s/\/ /\/\//' | LC_ALL=C sort -df | tr '\n' ','
-echo
+printf "%s\n" . .. | cat <(tr '\n' ',' <<< "$(ls -1 | sed 's/$/,/' | sed 's/^/ /; s/\/ /\/\//' | LC_ALL=C sort -df)") <(echo)
